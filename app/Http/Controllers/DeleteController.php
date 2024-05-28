@@ -19,4 +19,6 @@ class DeleteController extends Controller
         return redirect()->route('post.index');
 
     }
+protected $middleware;
 }
+
