@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\PostTag;
 
 
 class StoreController extends Controller
@@ -13,14 +14,20 @@ class StoreController extends Controller
             'title' => 'string|required',
             'content' => 'string|required',
             'image' => 'string|required',
+            'category_id' => '',
+            'tags' => '',
 
         ]);
-        Post::create($data);
+        $tags = $data['tags'];
+        unset($data['tags']);
+
+        $post = Post::create($data);
+
+        $post->tags()->attach($tags);
+
+
+
         return redirect()->route('post.index');
-
-
-
-
 
 
     }
