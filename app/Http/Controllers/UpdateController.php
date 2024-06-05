@@ -13,9 +13,15 @@ class UpdateController extends Controller
             'title' => 'string|required',
             'content' => 'string|required',
             'image' => 'string|required',
+            'category_id' => '',
+            'tags' => '',
 
         ]);
+        $tags = $data['tags'];
+        unset($data['tags']);
+
         $post->update($data);
+        $post->tags()->sync($tags);
         return redirect()->route('post.show', $post->id);
     }
 }
