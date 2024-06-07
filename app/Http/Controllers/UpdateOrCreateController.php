@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
-class UpdateOrCreateController extends Controller
+class UpdateOrCreateController extends BaseController
 {
     public function updateOrCreate()
     {

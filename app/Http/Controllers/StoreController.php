@@ -2,33 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreRequest;
 use App\Models\Post;
 use App\Models\PostTag;
 
-
-class StoreController extends Controller
+class StoreController extends BaseController
 {
-    public function store()
+    public function store(StoreRequest $request)
     {
-        $data = request()->validate([
-            'title' => 'string|required',
-            'content' => 'string|required',
-            'image' => 'string|required',
-            'category_id' => '',
-            'tags' => '',
+        $data = $request->validated();
 
-        ]);
-        $tags = $data['tags'];
-        unset($data['tags']);
-
-        $post = Post::create($data);
-
-        $post->tags()->attach($tags);
-
-
+        $this->service->store($data);
 
         return redirect()->route('post.index');
-
 
     }
 }

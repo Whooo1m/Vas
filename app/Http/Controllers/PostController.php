@@ -7,14 +7,13 @@ use App\Models\Post;
 use App\Models\Tag;
 
 
-class PostController extends Controller
+class PostController extends BaseController
 {
     public function index()
     {
+         $posts = Post::all();
 
-        $posts = Post::all();
-
-        return view('post.index', compact('posts'));
+         return view('post.index', compact('posts'));
 
 
     }
