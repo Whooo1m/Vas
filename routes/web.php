@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\CreateController;
 use App\Http\Controllers\DeleteController;
 use App\Http\Controllers\EditController;
 use App\Http\Controllers\FirstOrCreateController;
@@ -12,11 +13,12 @@ use App\Http\Controllers\StoreController;
 use App\Http\Controllers\UpdateController;
 use App\Http\Controllers\UpdateOrCreateController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CreateController;
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+
 
 Route::get('/posts', [PostController::class, 'index'])->name('post.index');
 Route::get('/posts/create', [CreateController::class, 'create'])->name('post.create');

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
-use App\Models\PostTag;
 
 
 class StoreController extends Controller
@@ -28,7 +27,6 @@ class StoreController extends Controller
 
 
         return redirect()->route('post.index');
-
 
     }
 }

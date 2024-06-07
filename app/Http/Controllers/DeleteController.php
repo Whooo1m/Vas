@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
-use Illuminate\Http\Request;
 
 class DeleteController extends Controller
 {
@@ -12,6 +11,7 @@ class DeleteController extends Controller
         $post = Post::withTrashed()->find(2);
         $post->restore();
         dd('deleted');
+
     }
 
     public function destroy(Post $post){
