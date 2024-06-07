@@ -2,23 +2,17 @@
 
 namespace App\Http\Controllers;
 
-class UpdateController extends Controller
+use App\Http\Requests\UpdateRequest;
+use App\Models\Post;
+
+class UpdateController extends BaseController
 {
-   public function update()
-   {
-       $data = request()->validate([
-           'title' => 'string|required',
-           'content' => 'string|required',
-           'image' => 'string|required',
-           'category_id' => '',
-           'tags' => '',
+    public function update(UpdateRequest $request, Post $post)
+    {
+        $data = $request->validated();
 
-       ]);
-       $tags = $data['tags'];
-       unset($data['tags']);
+        $this->service->update($post, $data);
 
-       $post->update($data);
-       $post->tags()->sync($tags);
-       return redirect()->route('post.show', $post->id);
-   }
+        return redirect()->route('post.show', $post->id);
+    }
 }

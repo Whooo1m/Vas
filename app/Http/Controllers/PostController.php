@@ -7,7 +7,7 @@ use App\Models\Post;
 use App\Models\Tag;
 
 
-class PostController extends Controller
+class PostController extends BaseController
 {
     public function index()
     {

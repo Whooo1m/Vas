@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
-
-class DeleteController extends Controller
+use Illuminate\Http\Request;
+class DeleteController extends BaseController
 {
     public function delete()
     {

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
-class FirstOrCreateController extends Controller
+class FirstOrCreateController extends BaseController
 {
     public function firstOrCreate()
     {
