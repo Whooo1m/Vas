@@ -19,7 +19,6 @@ Route::get('/', function () {
 });
 
 
-
 Route::get('/posts', [PostController::class, 'index'])->name('post.index');
 Route::get('/posts/create', [CreateController::class, 'create'])->name('post.create');
 
@@ -36,9 +35,23 @@ Route::get('/posts/first_or_create', [FirstOrCreateController::class, 'firstOrCr
 Route::get('/posts/update_or_create', [UpdateOrCreateController::class, 'updateOrCreate']);
 
 
+
+Route::group(['namespace' => '\App\Http\Controllers\Admin\Post'], function () {
+
+    Route::prefix('/admin')->group(function () {
+
+        Route::get('/post', 'PostController')->name('admin.post.index');
+
+    });
+});
+
 Route::get('/main', [MainController::class, 'index'])->name('main.index');
 Route::get('/contacts', [ContactController::class, 'index'])->name('contacts.index');
 Route::get('/about', [AboutController::class, 'index'])->name('about.index');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Auth::routes();
 
