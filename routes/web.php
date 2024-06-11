@@ -6,17 +6,19 @@ use App\Http\Controllers\CreateController;
 use App\Http\Controllers\DeleteController;
 use App\Http\Controllers\EditController;
 use App\Http\Controllers\FirstOrCreateController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ShowController;
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\UpdateController;
 use App\Http\Controllers\UpdateOrCreateController;
+use App\Http\Middleware\AdminPanelMiddleware;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',[HomeController::class,'index'])->name('home');
+
 
 
 Route::get('/posts', [PostController::class, 'index'])->name('post.index');
@@ -36,11 +38,11 @@ Route::get('/posts/update_or_create', [UpdateOrCreateController::class, 'updateO
 
 
 
-Route::group(['namespace' => '\App\Http\Controllers\Admin\Post'], function () {
+Route::group(['namespace' => '\App\Http\Controllers\Admin\Post', ], function () {
 
     Route::prefix('/admin')->group(function () {
 
-        Route::get('/post', 'PostController')->name('admin.post.index');
+        Route::get('/post', 'PostController')->middleware(AdminPanelMiddleware::class)->name('admin.post.index');
 
     });
 });

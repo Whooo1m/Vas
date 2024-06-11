@@ -10,6 +10,8 @@ class StoreController extends BaseController
 {
     public function store(StoreRequest $request)
     {
+
+
         $data = $request->validated();
 
         $this->service->store($data);
