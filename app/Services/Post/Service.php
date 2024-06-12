@@ -16,6 +16,8 @@ class Service
 
         $post->tags()->attach($tags);
 
+        return $post;
+
 
     }
 
@@ -27,6 +29,8 @@ class Service
 
         $post->update($data);
         $post->tags()->sync($tags);
+        return $post->fresh();
+
 
     }
 

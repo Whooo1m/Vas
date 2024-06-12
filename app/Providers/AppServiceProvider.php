@@ -27,7 +27,10 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
 
-        VerifyCsrfToken::except(['/posts']);
+        VerifyCsrfToken::except([
+            '/posts',
+            '/posts/*'
+        ]);
 
         Gate::policy(User::class, AdminPolicy::class);
         Paginator::useBootstrapFive();
