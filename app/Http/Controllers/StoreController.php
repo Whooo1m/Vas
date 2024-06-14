@@ -9,15 +9,15 @@ use App\Models\PostTag;
 
 class StoreController extends BaseController
 {
-    public function store(StoreRequest $request)
+    public function __invoke(StoreRequest $request)
     {
 
 
         $data = $request->validated();
 
         $post = $this->service->store($data);
+        return $post instanceof Post ? new PostResource($post) : $post;
 
-        return new PostResource($post);
 
 //        return redirect()->route('post.index');
 

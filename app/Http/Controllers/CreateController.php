@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class CreateController extends BaseController
 {
-    public function create()
+    public function __invoke()
     {
         $categories = Category::all();
 

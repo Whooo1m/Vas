@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Category extends Model
 {
+    protected $guarded = ['category_pkey'];
     use HasFactory;
 
     public function posts(): HasMany
