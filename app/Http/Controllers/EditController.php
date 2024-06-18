@@ -9,7 +9,7 @@ use App\Models\Post;
 
 class EditController extends BaseController
 {
-    public function edit(Post $post)
+    public function __invoke(Post $post)
     {
         $categories = Category::all();
         $tags = Tag::all();

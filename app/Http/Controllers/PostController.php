@@ -14,9 +14,11 @@ use Illuminate\Support\Facades\Gate;
 
 class PostController extends BaseController
 {
-    public function index(FilterRequest $request)
+    public function __invoke(FilterRequest $request)
     {
         $data = $request->validated();
+
+
 
         $page = $data['page'] ?? 1;
         $perPage = $data['per_page'] ?? 10;

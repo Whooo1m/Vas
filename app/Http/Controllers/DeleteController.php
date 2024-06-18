@@ -6,7 +6,7 @@ use App\Models\Post;
 use Illuminate\Http\Request;
 class DeleteController extends BaseController
 {
-    public function delete()
+    public function __invoke()
     {
         $post = Post::withTrashed()->find(2);
         $post->restore();
